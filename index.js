@@ -7,6 +7,7 @@ morgan.token('body', (req, res) => JSON.stringify(req.body))
 app.use(morgan(':method :url :res[content-length] ":referrer" :response-time ms :body'))
 
 app.use(express.json())
+app.use(express.static('build'))
 app.use(cors())
 
 let persons = [
@@ -37,9 +38,9 @@ let persons = [
       }
 ]
 
-app.get('/', (request, response) => {
+/*app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
-})
+})*/
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
